@@ -1,0 +1,30 @@
+library(datasets)
+View(iris)
+
+head(iris, 5)
+tail(iris,5)
+
+summary(iris)
+sum(is.na(iris))
+
+library(skimr)
+skim(iris)
+
+iris %>%
+  dplyr:: group_by(Species) %>%
+  skim()
+
+iris %>%
+  ggplot(aes(Sepal.Length, Sepal.Width,
+             color = Species)) +
+  geom_point(alpha = 0.5)+
+  geom_smooth(method = lm, se = F)+
+  facet_wrap(~Species) +
+  labs(title = "Iris Sepal Length and Sepal Width")
+
+iris %>%
+  ggplot(aes(Petal.Length,Petal.Width,
+             color = Species))+
+  geom_point(alpha = 0.5)+
+  geom_smooth(method = lm, se = F)+
+  labs(title = "Iris Petal Length and Petal Width")
